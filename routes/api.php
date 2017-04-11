@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers;
+
 use App\Fuel;
 use App\Office;
 use App\Worship;
@@ -24,9 +26,9 @@ use Illuminate\Validation\Validator;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('v1/fuel', function(Request $request){
 $lat = $request->input('lat');
@@ -194,32 +196,34 @@ Route::post('v1/logout',function(Request $request){
 		}
 })->middleware('ath');
 
-Route::post('v1/register',function(Request $request){
+// Route::post('v1/register',function(Request $request){
        
-       $name = $request->input('name');
-       $email = $request->input('email');
-       $password = $request->input('password');        
-       
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'bail|required|unique:users',
-            'password' => 'required'
-        ]);
+//        $name = $request->input('name');
+//        $email = $request->input('email');
+//        $password = $request->input('password');        
+
+//         $this->validate($request, [
+//             'name' => 'required',
+//             'email' => 'bail|required|unique:users',
+//             'password' => 'required'
+//         ]);
 
        
-        $token = Str::random(20);        
+//         $token = Str::random(20);        
 
-        $save = new User;
-        $save->name = $name;
-        $save->password = $password;
-        $save->email = $email;
-        $save->api_token = $token;
+//         $save = new User;
+//         $save->name = $name;
+//         $save->password = $password;
+//         $save->email = $email;
+//         $save->api_token = $token;
 
-        if($save->save()){
-            return response()->json(array('status'=>'true','data'=>array('message'=>'register success')));
-        }else{
-            return response()->json(array('status'=>'false','data'=>array('message'=>'logout failed','error'=>$errors->all())));            
-        }
-});
+//         if($save->save()){
+//             return response()->json(array('status'=>'true','data'=>array('message'=>'register success')));
+//         }else{
+//             return response()->json(array('status'=>'false','data'=>array('message'=>'logout failed','error'=>$errors->all())));            
+//         }
+// });
+
+Route::post('v1/register','ValregController@index');
 
 
