@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>['auth','active']],function(){
 	Route::resource('office','OfficeController');
 	Route::resource('fuel','FuelController');
 	Route::resource('site','SiteController');
@@ -30,7 +30,7 @@ Route::group(['middleware'=>'auth'],function(){
 		]);
 });
 
-Route::group(['middleware' => 'admin'], function(){
+Route::group(['middleware' => ['auth','admin','active']], function(){
 	Route::resource('manage','ManageController'); 	
 });
 

@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Middleware;
-use Auth;
-use Closure;
-use App\Role;
-use App\User;
 
-class IsAdmin
+use Closure;
+use Auth;
+use User;
+
+class isActive
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,12 @@ class IsAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        if(Auth::user() && Auth::user()->level==1){
-          return $next($request);  
+    {   if(Auth::user()->active == 1){
+             return $next($request);
         }else{
-            return redirect()->route('home');
-        }        
+            return redirect()->route('login');
+        }
+
         
     }
 }

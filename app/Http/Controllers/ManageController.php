@@ -14,7 +14,8 @@ class ManageController extends Controller
      */
     public function index()
     {
-        return route();
+        $user = Manage::all();
+        return view('manage.index',compact('user'))->with('i');
     }
 
     /**
@@ -41,10 +42,10 @@ class ManageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Manage  $manage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Manage $manage)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class ManageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Manage  $manage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Manage $manage)
+    public function edit($id)
     {
         //
     }
@@ -64,22 +65,27 @@ class ManageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Manage  $manage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Manage $manage)
+    public function update(Request $request, $id)
     {
-        //
+        $update = Manage::findOrFail($id);
+        $update->active = $request->up;
+        $update->save();
+
+        return redirect()->route('manage.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Manage  $manage
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Manage $manage)
+    public function destroy($id)
     {
-        //
+        Manage::findOrFail($id)->delete();
+        return redirect()->route('manage.index');
     }
 }

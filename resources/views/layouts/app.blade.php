@@ -67,6 +67,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                @if(Auth::user()->level==1)
+                                    <li><a href="{{route('manage.index')}}">Manage user</a></li>
+                                @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
