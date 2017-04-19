@@ -25,7 +25,7 @@ class ValregController extends Controller
 
         $save = new User;
         $save->name = $name;
-        $save->password = $password;
+        $save->password = bcrypt($password);
         $save->email = $email;
         $save->api_token = $token;
         $save->save();
