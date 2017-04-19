@@ -13,7 +13,7 @@
 <div class="col-md-12 space">
 	<div class="row">
 		<div class="col-md-6">
-			<img src="{{Storage::url($show->image)}}" class="img-responsive" id="featured">	
+			<img src="{{asset('storage/$show->image')}}" class="img-responsive" id="featured">	
 		</div>
 		<div class="col-md-6">
 		<h4>Details</h5>
