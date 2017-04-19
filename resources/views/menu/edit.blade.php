@@ -25,7 +25,7 @@
 <div class="col-md-6 col-md-offset-2">	
 	<div class="form-group">
 	  <label>Image Preview</label>
-	  <img src="{{asset('storage/$row->image')}}" class="img-responsive img-preview">
+	  <img src="{{asset('storage/'.$row->image)}}" class="img-responsive img-preview">
 	  <input type="hidden" name="oldpic" value="{{$row->image}}">
 	</div>							
 	  <button type="submit" class="btn btn-success">Save</button>
