@@ -19,7 +19,7 @@ class isActive
     {   if(Auth::user()->active == 1){
              return $next($request);
         }else{
-            return redirect()->route('login');
+            return redirect('/');
         }
 
         

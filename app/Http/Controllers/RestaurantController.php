@@ -108,8 +108,10 @@ class RestaurantController extends Controller
          $update->promotion = $request->promotion;
          $update->lat = $request->lat;
          $update->lng = $request->lng;        
-         if ($request->hasFile('picture')) { 
-             Storage::delete('public/'.$request->oldpic);           
+         if ($request->hasFile('picture')) {
+            if($request->oldpic){
+              Storage::delete('public/'.$request->oldpic);
+            }             
              $file = $request->picture->store('public');
              $update->image = $request->picture->hashName();
         }

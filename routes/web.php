@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index',['middleware'=>['auth','active']])->name('home');
 
 Route::group(['middleware'=>['auth','active']],function(){
 	Route::resource('office','OfficeController');
