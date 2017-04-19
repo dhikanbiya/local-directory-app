@@ -28,7 +28,7 @@
 	</div>	
 </div>
 <div class="col-md-12 space">
-	<p class="text-center"><a href="{{route('office.edit',$show->id)}}" class="btn btn-md btn-success">edit</a></p>
+	<p class="text-center"><a href="{{route('restaurant.edit',$show->id)}}" class="btn btn-md btn-success">edit</a></p>
 </div>
 
 
