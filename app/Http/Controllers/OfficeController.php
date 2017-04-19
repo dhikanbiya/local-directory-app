@@ -114,7 +114,9 @@ class OfficeController extends Controller
         $update->lng = $request->lng;
         $update->information = $request->information;
         if ($request->hasFile('picture')) { 
-            Storage::delete('public/'.$request->oldpic);           
+           if($request->oldpic){
+              Storage::delete('public/'.$request->oldpic);
+            }            
             $file = $request->picture->store('public');
             $update->image = $request->picture->hashName();
        }

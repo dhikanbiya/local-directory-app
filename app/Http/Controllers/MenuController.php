@@ -89,7 +89,9 @@ class MenuController extends Controller
          $update->name = $request->name;         
          $update->price = $request->price;                  
          if ($request->hasFile('picture')) { 
-             Storage::delete('public/'.$request->oldpic);           
+            if($request->oldpic){
+              Storage::delete('public/'.$request->oldpic);
+            }            
              $file = $request->picture->store('public');
              $update->image = $request->picture->hashName();
         }

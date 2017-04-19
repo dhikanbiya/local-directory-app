@@ -107,7 +107,9 @@ class WorshipController extends Controller
          $update->religion_type = $request->rel;
          $update->address = $request->address;
          if ($request->hasFile('picture')) { 
-             Storage::delete('public/'.$request->oldpic);           
+             if($request->oldpic){
+              Storage::delete('public/'.$request->oldpic);
+            }            
              $file = $request->picture->store('public');
              $update->image = $request->picture->hashName();
         }

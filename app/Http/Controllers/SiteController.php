@@ -105,7 +105,9 @@ class SiteController extends Controller
          $update->lng = $request->lng;
          $update->facility = $request->facility;
          if ($request->hasFile('picture')) { 
-             Storage::delete('pubic/'.$request->oldpic);           
+             if($request->oldpic){
+              Storage::delete('public/'.$request->oldpic);
+            }           
              $file = $request->picture->store('public');
              $update->image = $request->picture->hashName();
         }
