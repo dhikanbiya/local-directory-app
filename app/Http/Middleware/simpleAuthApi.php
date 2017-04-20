@@ -18,7 +18,7 @@ class simpleAuthApi
     {        
         $row = DB::table('users')->where([
             ['email',$request->header('email')],
-            ['api_token',$request->header('api_token')]
+            ['api_token',$request->header('token')]
         ])->count();
         
         if($row > 0){
