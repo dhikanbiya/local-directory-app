@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Http\Controllers\Str;
+use Illuminate\Support\Str;
 
 
 class ValregController extends Controller
