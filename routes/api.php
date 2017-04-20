@@ -131,8 +131,13 @@ return response()->json(array('status'=>'true','data'=>$records));
 Route::post('v1/restaurant_menu', function(Request $request){
 $restaurant_id = $request->input('restaurant_id');
 
-$records = Menu::where('restaurant_id',$restaurant_id)->firstOrFail();
-return response()->json(array('status'=>'true','data'=>$records));
+$records = Menu::where('restaurant_id',$restaurant_id);
+if($records->count()>1){
+    return response()->json(array('status'=>'true','data'=>$records));
+}else{
+    return response()->json(array('status'=>'false','data'=>$records));
+}
+
 })->middleware('ath');
 
 Route::post('v1/site', function(Request $request){
