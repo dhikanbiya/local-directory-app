@@ -1,4 +1,4 @@
-<?php
+    <?php
 use App\Http\Controllers;
 
 use App\Fuel;
@@ -109,7 +109,7 @@ $lat = $request->input('lat');
 $lng = $request->input('lng');
 $records = 
     Restaurant::select(
-        DB::raw("name, address, phone, image, lat, lng,( 
+        DB::raw("id, name, address, phone, image, lat, lng,( 
             6371 * acos( 
                 cos( radians(  ?  ) ) *
                 cos( radians( lat ) ) * 
@@ -184,7 +184,7 @@ Route::post('v1/login', function(Request $request){
 
 Route::post('v1/logout',function(Request $request){
 
-		$api_token = $request->header('api_token');
+		$api_token = $request->header('token');
 	
 		$token = Str::random(20);        
 		$update = User::where('api_token',$api_token)->firstOrFail();
