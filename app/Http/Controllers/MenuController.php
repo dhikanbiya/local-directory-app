@@ -29,9 +29,9 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('menu.create')->with('id',$id);
     }
 
     /**
@@ -42,7 +42,23 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+	    'name' => 'required',
+	    'price' => 'required|numeric',
+	    'picture' => 'required|image',
+        ]);
+	
+	$menu = new Menu;
+	$menu->name = $request->name;
+	$menu->price = $request->price;
+	$menu->restaurant_id = $request->resto_id;
+	if ($request->hasFile('picture')) {            
+            $file = $request->picture->store('public');
+            $menu->image = $request->picture->hashName();
+            $menu->save();            
+        }
+        return redirect()->route('menu.show',$request->resto_id)->with('success','new menu created');
+	
     }
 
     /**
@@ -53,8 +69,8 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        $records = Restaurant::find($id)->menu;
-        return view('menu.show',compact('records'));
+	$records = Restaurant::find($id)->menu;
+	return view('menu.show',compact('records'))->with('resto_id',$id);
     }
 
     /**
@@ -105,9 +121,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        Site::findOrFail($id)->delete();
-        return view('restaurant.show')->with('success','delete success');
+        Menu::findOrFail($id)->delete();
+        return redirect()->route('menu.show',$request->resto_id)->with('success','delete success');
     }
 }

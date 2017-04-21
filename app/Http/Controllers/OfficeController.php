@@ -5,7 +5,7 @@ use App\Office;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use App\Http\Requests\valOffice;
+use App\Http\Requests\ValOffice;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 

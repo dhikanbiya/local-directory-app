@@ -38,9 +38,7 @@
 	</div>			
 	<div class="form-group">
 	  <label>Information</label>
-	  <textarea class="form-control" rows="5" name="information">
-	  	{{ old('information') }}
-	  </textarea>
+	  <textarea class="form-control" rows="5" name="information">{{ old('information') }}</textarea>
 	</div>
 	  <button type="submit" class="btn btn-success">Save</button>
 	  <a href="{{route('office.index')}}" class="btn btn-warning">back</a>	

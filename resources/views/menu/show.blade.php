@@ -5,6 +5,7 @@
         {{ session('success') }}
     </div>
 @endif
+<a href="{{route('createmenu',$resto_id)}}" class="btn btn-info btn-xs">create</a>
 <a href="{{route('restaurant.index')}}" class="btn btn-info btn-xs">back</a></span></h1>
 @foreach($records as $show)
 <div class="col-md-12">
@@ -26,7 +27,8 @@
 			<a href="{{route('menu.edit',$show->id)}}" class="btn btn-md btn-success">edit <i class="fa fa-edit"></i></a>
 			<form method="POST" action="{{route('menu.destroy',$show->id)}}" style="display: inline;">
 				{{ csrf_field() }}
-				{{ method_field('DELETE') }}	
+				{{ method_field('DELETE') }}
+			<input type='hidden' name='resto_id' value='{{$resto_id}}'>	
 				<button type="submit" name="submit" class="btn btn-danger btn-md">delete <i class="fa fa-trash"></i></button>
 			</form>		
 		</div>	

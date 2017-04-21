@@ -34,4 +34,6 @@ Route::group(['middleware' => ['auth','admin','active']], function(){
 	Route::resource('manage','ManageController'); 	
 });
 
+Route::get('menu/create/{id}',array('as'=>'createmenu','uses'=>'MenuController@create'),['middleware'=>['auth','active']]);
+
 
