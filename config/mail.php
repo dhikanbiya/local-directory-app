@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'admin@cmore.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'cmoreapp.tangsel@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'Admin CMORE|BACKEND'),
     ],
 
