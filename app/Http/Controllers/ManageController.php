@@ -56,10 +56,29 @@ class ManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('manage.edit');
+
     }
+    
+    public function updatePass(Request $request)
+    {
+	$this->validate($request,[
+        'newpass' => 'required|min:5',
+        'passconf' => 'required|min:5|same:newpass',        
+        ]);
+	
+       $id = Auth::user()->id();
+       $update = Manage::findOrFail($id);
+       $update->password = bcrypt($request->newpass);
+       $update->save();
+
+       return redirect()->route('home')->with('success','password updated');
+
+
+    }
+
 
     /**
      * Update the specified resource in storage.

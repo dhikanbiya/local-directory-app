@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Manage;
+use App\Office;
+use App\Restaurant;
+use App\Worship;
+use App\Fuel;
+use App\Site;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $office = Office::all()->count();
+	$user = Manage::all()->count();
+	$restaurant = Restaurant::all()->count();
+	$worship = Worship::all()->count();
+	$fuel = Fuel::all()->count();
+	$site = Site::all()->count();
+	return view('home',compact(['user','worship','office','site','fuel','restaurant']));
     }
 }

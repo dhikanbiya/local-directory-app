@@ -28,10 +28,12 @@ Route::group(['middleware'=>['auth','active']],function(){
 	Route::resource('menu','MenuController',['except'=>
 		'index'
 		]);
+	Route::get('manage/edit',array('as'=>'editpass','uses'=>'ManageController@edit'));
+	Route::post('manage/{$id}/updatepass',array('as'=>'updatepass','uses'=>'ManageController@updatePass'));
 });
 
 Route::group(['middleware' => ['auth','admin','active']], function(){
-	Route::resource('manage','ManageController'); 	
+	Route::resource('manage','ManageController',['except'=>['edit','update']]); 	
 });
 
 Route::get('menu/create/{id}',array('as'=>'createmenu','uses'=>'MenuController@create'),['middleware'=>['auth','active']]);
