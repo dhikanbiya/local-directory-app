@@ -29,11 +29,11 @@ Route::group(['middleware'=>['auth','active']],function(){
 		'index'
 		]);
 	Route::get('manage/edit',array('as'=>'editpass','uses'=>'ManageController@edit'));
-	Route::post('manage/{$id}/updatepass',array('as'=>'updatepass','uses'=>'ManageController@updatePass'));
+	Route::post('manage/updatepass',array('as'=>'updatepass','uses'=>'ManageController@updatePass'));
 });
 
 Route::group(['middleware' => ['auth','admin','active']], function(){
-	Route::resource('manage','ManageController',['except'=>['edit','update']]); 	
+	Route::resource('manage','ManageController',['except'=>['edit']]); 	
 });
 
 Route::get('menu/create/{id}',array('as'=>'createmenu','uses'=>'MenuController@create'),['middleware'=>['auth','active']]);
