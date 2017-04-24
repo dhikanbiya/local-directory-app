@@ -14,7 +14,7 @@ class ManageController extends Controller
      */
     public function index()
     {
-        $user = Manage::all();
+        $user = Manage::where('web',1)->firstOrFail();
         return view('manage.index',compact('user'))->with('i');
     }
 
