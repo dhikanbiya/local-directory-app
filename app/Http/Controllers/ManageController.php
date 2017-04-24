@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Manage;
 use Illuminate\Http\Request;
 
@@ -12,9 +12,8 @@ class ManageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $user = Manage::where('web',1)->firstOrFail();
+    public function index(){
+        $user = Manage::where('web',1)->where('id','<>',Auth::user()->id)->get();
         return view('manage.index',compact('user'))->with('i');
     }
 
