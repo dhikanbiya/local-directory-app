@@ -64,11 +64,11 @@ class ManageController extends Controller
     public function updatePass(Request $request)
     {
 	$this->validate($request,[
-        'newpass' => 'required|min:5',
-        'passconf' => 'required|min:5|same:newpass',        
+        'password' => 'required|min:5',
+        'passconf' => 'required|min:5|same:password',        
         ]);
 	
-       $id = Auth::user()->id();
+       $id = Auth::user()->id;
        $update = Manage::findOrFail($id);
        $update->password = bcrypt($request->newpass);
        $update->save();

@@ -8,14 +8,13 @@
 		<div class="row">
 			<div class="form-group">
 			  <label>New password</label>
-			  <input type="password" class="form-control" id="password" name="name"  value="{{ old('password') }}">
+			  <input type="password" class="form-control" id="password" name="password"  value="{{ old('password') }}">
 			</div>
 			<div class="form-group">
 			  <label>Confirm new password</label>
-			  <input type="password" class="form-control"  name="confpass"  value="{{ old('confpass') }}">		 
+			  <input type="password" class="form-control"  name="passconf"  value="{{ old('passconf') }}">		 
 			</div>									
 		</div>	  	  
-<input type='hidden' name='id' value='{{Auth::user()->id}}'>
 	  <button type="submit" class="btn btn-success">Save</button>
 	  <a href="{{route('home')}}" class="btn btn-warning">back</a>	
 </div>

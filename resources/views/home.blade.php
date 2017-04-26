@@ -3,6 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row">
+	<div class="col-md-12">
+	  @if (session('success'))
+   		<div class="alert alert-success">
+        		{{session('success')}}
+  		</div>
+	  @endif
+	</div>
         <h1>hello {{Auth::user()->name}}</h1>
 	<div class="col-md-6">
 		<p>

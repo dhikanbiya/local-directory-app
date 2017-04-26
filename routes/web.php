@@ -29,7 +29,7 @@ Route::group(['middleware'=>['auth','active']],function(){
 		'index'
 		]);
 	Route::get('manage/edit',array('as'=>'editpass','uses'=>'ManageController@edit'));
-	Route::post('manage/updatepass',array('as'=>'updatepass','uses'=>'ManageController@updatePass'));
+	Route::patch('manage/updatepass',array('as'=>'updatepass','uses'=>'ManageController@updatePass'));
 });
 
 Route::group(['middleware' => ['auth','admin','active']], function(){
