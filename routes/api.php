@@ -131,7 +131,7 @@ return response()->json(array('status'=>'true','data'=>$records));
 Route::post('v1/restaurant_menu', function(Request $request){
 $restaurant_id = $request->input('restaurant_id');
 
-$records = Menu::where('restaurant_id',$restaurant_id);
+$records = Menu::where('restaurant_id',$restaurant_id)->get();
 if($records->count()>1){
     return response()->json(array('status'=>'true','data'=>$records));
 }else{
