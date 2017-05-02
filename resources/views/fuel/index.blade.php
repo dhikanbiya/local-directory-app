@@ -21,7 +21,7 @@
 <tbody>
 @foreach($fuel as $row)
 <tr>		
-	<td>{{ ++$i }}</td>
+	<td>{{ (($fuel->currentPage() - 1 ) * $fuel->perPage() ) + $loop->iteration }}</td>
 	<td>{{$row->name}}</td>
 	<td>{{$row->address}}</td>
 	<td>

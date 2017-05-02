@@ -69,7 +69,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-	$records = Restaurant::find($id)->menu;
+	$records = Menu::where('restaurant_id',$id)->paginate(2);
 	return view('menu.show',compact('records'))->with('resto_id',$id);
     }
 

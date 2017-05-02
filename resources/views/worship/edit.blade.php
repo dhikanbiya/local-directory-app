@@ -43,10 +43,13 @@
 	  <label class="radio-inline">
 	    <input type="radio" name="rel"  value="confucion" @if($row->religion_type == 'confucion') checked="checked" @endif> Confucion
 	  </label>
+	  <label class="radio-inline">
+            <input type="radio" name="rel"  value="hindu" @if($row->religion_type == 'hindu') checked="checked" @endif> Hindu
+          </label>
 	</div>
 	<div class="form-group">
 	  <label>Image Preview</label>
-	  <img src="{{asset('storage/.'$row->image)}}" class="img-responsive img-preview">
+	  <img src="{{asset('storage/'.$row->image)}}" class="img-responsive img-preview">
 	  <input type="hidden" name="oldpic" value="{{$row->image}}">
 	</div>			
 	<div class="form-group">

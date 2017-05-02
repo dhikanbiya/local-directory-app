@@ -32,9 +32,9 @@
 				<button type="submit" name="submit" class="btn btn-danger btn-md">delete <i class="fa fa-trash"></i></button>
 			</form>		
 		</div>	
-	</div>	
+	</div>
+{{ $records->links() }}	
 </div>
 
 @endforeach
-
 @endsection

@@ -20,8 +20,8 @@
 </thead>
 <tbody>
 @foreach($worship as $row)
-<tr>		
-	<td>{{ ++$i }}</td>
+<tr>	
+	<td>{{ (($worship->currentPage() - 1 ) * $worship->perPage() ) + $loop->iteration }}</td>	
 	<td>{{$row->name}}</td>
 	<td>{{$row->religion_type}}</td>
 	<td>

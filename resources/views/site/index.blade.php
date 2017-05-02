@@ -20,7 +20,7 @@
 <tbody>
 @foreach($site as $row)
 <tr>		
-	<td>{{ ++$i }}</td>
+	<td>{{ (($site->currentPage() - 1 ) * $site->perPage() ) + $loop->iteration }}</td>
 	<td>{{$row->name}}</td>	
 	<td>
 		<a href="{{route('site.show',$row->id)}}" class="btn btn-xs btn-info">show <i class="fa fa-eye"></i></a>

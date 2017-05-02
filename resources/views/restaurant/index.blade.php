@@ -21,7 +21,7 @@
 <tbody>
 @foreach($resto as $row)
 <tr>		
-	<td>{{ ++$i }}</td>
+	<td>{{ (($resto->currentPage() - 1 ) * $resto->perPage() ) + $loop->iteration }}</td>
 	<td>{{$row->name}}</td>
 	<td>{{$row->phone}}</td>
 	<td>
